@@ -6,7 +6,7 @@ const client = new Discord.Client();
 
 
 
- const devs = ['323160008411971585' , '' , ''];
+ const devs = ['412547940654252053' , '412547940654252053' , '412547940654252053', '412547940654252053'];
 const adminprefix = "#";
 client.on('message', message => {
     var argresult = message.content.split(` `).slice(1).join(' ');
@@ -38,6 +38,16 @@ client.on('message', message => {
   }
   });
 
-
+client.on('ready', () => {
+  console.log(`Logged in as ${client.user.tag} !`);
+ 
+});
+ 
+client.on('guildMemberAdd',async member => {
+  if(member.guild.id !== '501419525661786122') return;
+  setTimeout(function(){
+  member.guild.channels.find(r => r.id === '501420247392190465').send('You`re In  **Energy**  Welcome ..');
+},3000);
+});
 
 client.login(process.env.BOT_TOKEN);
